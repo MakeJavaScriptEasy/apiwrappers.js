@@ -5,8 +5,8 @@ if (!globalThis.fetch) {
 /**
  * 
  * @param {boolean} returnDict 
- * @returns Object
- * @returns string
+ * @returns {Object} if returnDict is true returns the JSON
+ * @returns {string} if returnDict is false it just returns the Image
  */
 export const randomFox = async (returnDict) => {
     const data = await fetch("https://randomfox.ca/floof/?ref=apilist.fun")
@@ -21,8 +21,8 @@ export const randomFox = async (returnDict) => {
 /**
  * 
  * @param {boolean} returnDict 
- * @returns Object
- * @returns string
+ * @returns {Object} if returnDict is true returns the JSON
+ * @returns {string} if returnDict is false it just returns the Image
  */
 export const randomCat = async (returnDict = false) => {
     const data = await fetch("https://aws.random.cat/meow")
