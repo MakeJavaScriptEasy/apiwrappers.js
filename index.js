@@ -1,11 +1,5 @@
-import { dadJoke as dadJokeFile } from './wrappers/dadjoke.js';
-import { getChuckNorrisJoke as getChuckNorrisJokeFile } from './wrappers/chucknorris.js';
-import { randomCat, randomFox} from './wrappers/animal.js';
-import { memeGenerator as memeGeneratorFile } from './wrappers/meme.js';
-import Oxford from './wrappers/oxford.js';
-
-export const oxford = Oxford;
-export const memeGenerator = memeGeneratorFile
-export const animal = { randomFox, randomCat };
-export const getChuckNorrisJoke = getChuckNorrisJokeFile;
-export const dadJoke = dadJokeFile;
+export { dadJoke } from './wrappers/dadjoke.js';
+export { getChuckNorrisJoke } from './wrappers/chucknorris.js';
+export { randomCat, randomFox } from './wrappers/animal.js';
+export { memeGenerator } from './wrappers/meme.js';
+export { Oxford } from './wrappers/oxford.js';
