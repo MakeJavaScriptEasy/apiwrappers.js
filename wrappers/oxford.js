@@ -4,10 +4,10 @@ if (!globalThis.fetch) {
 	globalThis.fetch = fetch;
 }
 
-
-
 export default class Oxford {
     constructor(appId, appKey, language="en-gb") {
+        if (appId === null) throw new Error('You must provide a appID');
+        if (appKey === null) throw new Error('You must provide a appKey');
         this.appId = appId;
         this.appKey = appKey;
         this.language = language;
