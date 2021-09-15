@@ -13,6 +13,11 @@ export const Oxford =  class Oxford {
         this.language = language;
     }
 
+    /**
+     * 
+     * @param {string} word 
+     * @returns json
+     */
     baseRequest = async (word) => {
         try {
             const data = await fetch(`https://od-api.oxforddictionaries.com/api/v2/entries/${this.language}/${word.toLowerCase()}`,{
@@ -29,16 +34,29 @@ export const Oxford =  class Oxford {
         }
     }
 
+    /**
+     * 
+     * @param {string} word 
+     * @returns string
+     */
     async getWordDefination(word) {
         const data = await this.baseRequest(word)
         return data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0]
     }
-
+    /**
+     * 
+     * @param {string} word 
+     * @returns string
+     */
     async getWordgrammaticalFeature(word) {
         const data = await this.baseRequest(word)
         return data.results[0].lexicalEntries[0].entries[0].grammaticalFeatures[0].text
     }
-
+    /**
+     * 
+     * @param {string} word 
+     * @returns string[]
+     */
     async getWordExamples(word) {
         let em = []
         const data = await this.baseRequest(word)
@@ -51,6 +69,11 @@ export const Oxford =  class Oxford {
         return em
     }
 
+    /**
+     * 
+     * @param {string} word 
+     * @returns string[]
+     */
     async getWordSynonyms(word) {
         const data = await this.baseRequest(word)
         const res = data.results[0].lexicalEntries[0].entries[0].senses[0].subsenses[0].synonyms
@@ -60,7 +83,11 @@ export const Oxford =  class Oxford {
     }
 
 
-
+    /**
+     * 
+     * @param {string} word 
+     * @returns string[]
+     */
     async getWordLexicalCategory(word) {
         let em = [];
         const data = await this.baseRequest(word)
@@ -68,5 +95,4 @@ export const Oxford =  class Oxford {
         res.forEach(value => em.push(value.lexicalCategory.text))
         return em
     }
-
 }

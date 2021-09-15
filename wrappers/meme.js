@@ -5,6 +5,12 @@ if (!globalThis.fetch) {
 	globalThis.fetch = fetch;
 }
 
+/**
+ * 
+ * @param {boolean} returnDict 
+ * @returns Object
+ * @returns string
+ */
 export const  memeGenerator = async (returnDict=false) => {
     const data = await fetch("https://api.imgflip.com/get_memes")
     const response = await data.json()

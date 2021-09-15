@@ -2,6 +2,14 @@ import fetch from 'node-fetch'
 if (!globalThis.fetch) {
 	globalThis.fetch = fetch;
 }
+
+/**
+ * 
+ * @param {boolean} returnDict 
+ * @param {*} category 
+ * @returns Object
+ * @returns string
+ */
 export const getChuckNorrisJoke =  async (returnDict=false, category=null) => {
     const catagories = ["animal","career","celebrity","dev","explicit","fashion","food"
     ,"history","money","movie","music","political","religion","science","sport","travel"];
