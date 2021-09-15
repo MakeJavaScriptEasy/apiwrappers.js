@@ -1,5 +1,5 @@
 if (!globalThis.fetch) {
-	globalThis.fetch = fetch;
+    globalThis.fetch = fetch;
 }
 
 /**
@@ -11,7 +11,7 @@ if (!globalThis.fetch) {
 export const randomFox = async (returnDict) => {
     const data = await fetch("https://randomfox.ca/floof/?ref=apilist.fun")
     const response = await data.json()
-    if(!returnDict) {
+    if (!returnDict) {
         return response.image
     } else {
         return response
@@ -24,7 +24,7 @@ export const randomFox = async (returnDict) => {
  * @returns Object
  * @returns string
  */
-export const randomCat = async (returnDict=false) => {
+export const randomCat = async (returnDict = false) => {
     const data = await fetch("https://aws.random.cat/meow")
     const response = await data.json()
     if (!returnDict) {

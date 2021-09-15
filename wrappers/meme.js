@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 import random from 'fast-helpers.js/random.js'
 
 if (!globalThis.fetch) {
-	globalThis.fetch = fetch;
+    globalThis.fetch = fetch;
 }
 
 /**
@@ -11,7 +11,7 @@ if (!globalThis.fetch) {
  * @returns Object
  * @returns string
  */
-export const  memeGenerator = async (returnDict=false) => {
+export const memeGenerator = async (returnDict = false) => {
     const data = await fetch("https://api.imgflip.com/get_memes")
     const response = await data.json()
 

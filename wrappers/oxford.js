@@ -1,11 +1,11 @@
 import fetch from 'node-fetch'
 
 if (!globalThis.fetch) {
-	globalThis.fetch = fetch;
+    globalThis.fetch = fetch;
 }
 
-export const Oxford =  class Oxford {
-    constructor(appId, appKey, language="en-gb") {
+export const Oxford = class Oxford {
+    constructor(appId, appKey, language = "en-gb") {
         if (appId === null) throw new Error('You must provide a appID');
         if (appKey === null) throw new Error('You must provide a appKey');
         this.appId = appId;
@@ -20,17 +20,17 @@ export const Oxford =  class Oxford {
      */
     baseRequest = async (word) => {
         try {
-            const data = await fetch(`https://od-api.oxforddictionaries.com/api/v2/entries/${this.language}/${word.toLowerCase()}`,{
-            method: "GET",
-            headers: {
-                'app_id': this.appId,
-                'app_key': this.appKey
-            },
-        })
+            const data = await fetch(`https://od-api.oxforddictionaries.com/api/v2/entries/${this.language}/${word.toLowerCase()}`, {
+                method: "GET",
+                headers: {
+                    'app_id': this.appId,
+                    'app_key': this.appKey
+                },
+            })
             const response = await data.json()
             return response
-        } catch(err) {
-           return err
+        } catch (err) {
+            return err
         }
     }
 
@@ -78,7 +78,7 @@ export const Oxford =  class Oxford {
         const data = await this.baseRequest(word)
         const res = data.results[0].lexicalEntries[0].entries[0].senses[0].subsenses[0].synonyms
         let em = []
-        res.forEach((value, index)=> em.push(value.text))
+        res.forEach((value, index) => em.push(value.text))
         return em
     }
 
