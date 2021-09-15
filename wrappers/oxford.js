@@ -4,7 +4,16 @@ if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }
 
+/**
+ * Class acting as a wrapper around the Oxford dictionary API
+ */
 export const Oxford = class Oxford {
+    /**
+     * 
+     * @param {string} appId 
+     * @param {string} appKey 
+     * @param {string} language 
+     */
     constructor(appId, appKey, language = "en-gb") {
         if (appId === null) throw new Error('You must provide a appID');
         if (appKey === null) throw new Error('You must provide a appKey');
@@ -37,7 +46,7 @@ export const Oxford = class Oxford {
     /**
      * 
      * @param {string} word 
-     * @returns string
+     * @returns {string} the defination of the specified word
      */
     async getWordDefination(word) {
         const data = await this.baseRequest(word)
@@ -46,7 +55,7 @@ export const Oxford = class Oxford {
     /**
      * 
      * @param {string} word 
-     * @returns string
+     * @returns {string} gets the grammatical features of the specified word
      */
     async getWordgrammaticalFeature(word) {
         const data = await this.baseRequest(word)
@@ -55,7 +64,7 @@ export const Oxford = class Oxford {
     /**
      * 
      * @param {string} word 
-     * @returns string[]
+     * @returns {string[]} returns examples of using the word
      */
     async getWordExamples(word) {
         let em = []
@@ -72,7 +81,7 @@ export const Oxford = class Oxford {
     /**
      * 
      * @param {string} word 
-     * @returns string[]
+     * @returns {string[]} returns an array of synonyms for the specified word
      */
     async getWordSynonyms(word) {
         const data = await this.baseRequest(word)
@@ -86,7 +95,7 @@ export const Oxford = class Oxford {
     /**
      * 
      * @param {string} word 
-     * @returns string[]
+     * @returns {string[]} no idea what this is
      */
     async getWordLexicalCategory(word) {
         let em = [];

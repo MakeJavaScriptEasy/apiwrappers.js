@@ -7,8 +7,8 @@ if (!globalThis.fetch) {
  * 
  * @param {boolean} returnDict 
  * @param {*} category 
- * @returns Object
- * @returns string
+ * @returns {Object} if returnDict is true returns the JSON
+ * @returns {string} if returnDict is false it just returns the text
  */
 export const getChuckNorrisJoke = async (returnDict = false, category = null) => {
     const catagories = ["animal", "career", "celebrity", "dev", "explicit", "fashion", "food"

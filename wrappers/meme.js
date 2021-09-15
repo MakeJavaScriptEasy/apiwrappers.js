@@ -8,8 +8,8 @@ if (!globalThis.fetch) {
 /**
  * 
  * @param {boolean} returnDict 
- * @returns Object
- * @returns string
+ * @returns {Object} if returnDict is true returns the JSON
+ * @returns {string} if returnDict is false it just returns the URL
  */
 export const memeGenerator = async (returnDict = false) => {
     const data = await fetch("https://api.imgflip.com/get_memes")
