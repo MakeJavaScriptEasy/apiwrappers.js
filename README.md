@@ -17,7 +17,7 @@ Sure why not? Its 100% open source project, I would if you contribute int this p
 
 
 ```js
-import { getChuckNorrisJoke } from 'apiwrappers.js/chucknorris.js'
+import { getChuckNorrisJoke } from 'apiwrappers.js'
 getChuckNorrisJoke().then(data => console.log(data))
 
 ```
@@ -36,7 +36,7 @@ First of all generate an api key from https://developer.oxforddictionaries.com/ 
 
 
 ```js
-import Oxford from 'apiwrappers.js/oxford.js'
+import { Oxford } from 'apiwrappers.js'
 const api = new Oxford(appId, appKey, language="en-gb")
 
 api.getWordDefination('people').then(data => console.log(data))

@@ -1,10 +1,18 @@
 import fetch from 'node-fetch'
 if (!globalThis.fetch) {
-	globalThis.fetch = fetch;
+    globalThis.fetch = fetch;
 }
-export const getChuckNorrisJoke =  async (returnDict=false, category=null) => {
-    const catagories = ["animal","career","celebrity","dev","explicit","fashion","food"
-    ,"history","money","movie","music","political","religion","science","sport","travel"];
+
+/**
+ * 
+ * @param {boolean} returnDict 
+ * @param {*} category 
+ * @returns Object
+ * @returns string
+ */
+export const getChuckNorrisJoke = async (returnDict = false, category = null) => {
+    const catagories = ["animal", "career", "celebrity", "dev", "explicit", "fashion", "food"
+        , "history", "money", "movie", "music", "political", "religion", "science", "sport", "travel"];
     if (!category) {
         const data = await fetch("https://api.chucknorris.io/jokes/random");
         const response = await data.json();
