@@ -9,6 +9,7 @@ APIs we support:
 * Oxford API
 * Meme API
 * Urban Dictionary
+* Currency Converter
 
 **What is this?**
 
