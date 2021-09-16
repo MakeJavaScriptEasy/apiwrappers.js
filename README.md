@@ -1,5 +1,14 @@
 ### apiwrappers.js
 
+APIs we support:
+
+* Chuck Norris API
+* Animal API
+* Apple API
+* DadJoke API
+* Oxford API
+* Meme API
+* Urban Dictionary
 
 **What is this?**
 
