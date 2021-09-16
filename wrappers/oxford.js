@@ -12,7 +12,7 @@ export const Oxford = class Oxford {
      * 
      * @param {string} appId 
      * @param {string} appKey 
-     * @param {string} language 
+     * @param {string} language Enter the language code, defualt is en-gb
      */
     constructor(appId, appKey, language = "en-gb") {
         if (appId === null) throw new Error('You must provide a appID');

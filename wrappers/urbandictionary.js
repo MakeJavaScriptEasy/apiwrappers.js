@@ -1,0 +1,33 @@
+import fetch from 'node-fetch'
+
+if (!globalThis.fetch) {
+    globalThis.fetch = fetch;
+}
+
+/**
+ * @param {boolean} returnDict
+ * @param {string} rapidApiKey
+ * @param {string} rapidApiHost
+ * @param {string} word
+ * @returns {object}
+ * @returns {string[]}
+ */
+export const urbanDictionaryGetMeaning = async (rapidApiKey, rapidApiHost, word, returnDict=False) => {
+    let em = []
+    const data = await fetch(`https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${word}`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": `${rapidApiHost}`,
+		"x-rapidapi-key": `${rapidApiKey}`
+	}})
+    const response = await data.json();
+    if (returnDict) {
+        response.list.forEach(element => {
+            let meaning = element.definition;
+            em.push(meaning);
+            return em;
+        });
+    } else {
+        return response;
+    }
+}
