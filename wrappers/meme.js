@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import random from 'fast-helpers.js/random.js'
+import { random } from 'fast-helpers.js';
 
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
@@ -22,3 +22,5 @@ export const memeGenerator = async (returnDict = false) => {
         return response;
     }
 }
+
+console.log(memeGenerator())

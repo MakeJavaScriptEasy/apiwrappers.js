@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import random from 'fast-helpers.js/random'
+import { random } from 'fast-helpers.js';
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }
@@ -19,3 +19,4 @@ export const getAppleModels = async (returnDict) => {
         return response[1].models[randomNumber]
     }
 }
+
