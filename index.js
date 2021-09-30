@@ -6,4 +6,4 @@ export { Oxford } from './wrappers/oxford.js';
 export { getAppleModels } from './wrappers/apple.js'
 export { urbanDictionaryGetMeaning } from './wrappers/urbandictionary.js';
 export { convertCurrency } from './wrappers/currencyconverter.js';
-export { getPokimon } from './wrappers/pokimon.js'
+export { getPokemon } from './wrappers/pokemon.js'
