@@ -34,3 +34,13 @@ export const randomCat = async (returnDict = false) => {
         return response
     }
 }
+
+export const randomDog = async (returnDict = false) => {
+    const data = await fetch("https://dog.ceo/api/breeds/image/random")
+    const response = await data.json()
+    if (!returnDict) {
+        return response.message
+    } else {
+        return response
+    }
+}
