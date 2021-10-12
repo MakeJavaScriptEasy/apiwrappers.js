@@ -43,6 +43,22 @@ export const Oxford = class Oxford {
         }
     }
 
+    baseRequestTrans = async (word, sourceLang, targetLang) => {
+        try {
+            const data = await fetch(`https://od-api.oxforddictionaries.com/api/v2/translations/${sourceLang}/${targetLang}/${word}`, {
+                method: "GET",
+                headers: {
+                    'app_id': this.appId,
+                    'app_key': this.appKey
+                },
+            })
+            const response = await data.json()
+            return response
+        } catch (err) {
+            return err
+        }
+    }
+
     /**
      * 
      * @param {string} word 
@@ -104,4 +120,13 @@ export const Oxford = class Oxford {
         res.forEach(value => em.push(value.lexicalCategory.text))
         return em
     }
+
+    async getTranslation(word, sourceLang, targetLang) {
+        const data = await this.baseRequestTrans(word, sourceLang, targetLang)
+        return data
+
+    }
 }
+
+const x = new Oxford("2463a6d3", "1996f1b4ced0e7063c061b5d07f1cd49")
+// console.log(x.getTranslation('people', 'en', 'ar').then(data => console.log(data)))

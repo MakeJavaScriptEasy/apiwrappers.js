@@ -10,6 +10,8 @@ APIs we support:
 * Meme API
 * Urban Dictionary
 * Currency Converter
+* SpaceX
+* Pokimon
 
 **What is this?**
 

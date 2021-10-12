@@ -20,5 +20,3 @@ export const getPokimon = (pokimon, callback) => {
     pokimonReqeust(pokimon)
     .then(data => callback(data))
 }
-
-getPokimon('aerodactyl', (data) => console.log(data))
