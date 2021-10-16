@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-unfetch'
 import { random } from 'fast-helpers.js';
 
 if (!globalThis.fetch) {

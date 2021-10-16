@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-unfetch'
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }
