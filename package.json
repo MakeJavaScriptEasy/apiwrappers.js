@@ -1,6 +1,6 @@
 {
   "name": "apiwrappers.js",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A big api wrapper",
   "main": "index.js",
   "type": "module",
