@@ -10,21 +10,19 @@ if (!globalThis.fetch) {
  * @returns {Promise}
  */
 
-export const spaceX = (latest=true, callback) => {
-    const fetchspaceX = async () => {
-        try {
-            if (latest) {
-            const data = await fetch("https://api.spacexdata.com/v4/launches/latest")
+export const spaceX = async (latest=true, callback) => {
+    try {
+        if (latest) {
+        const data = await fetch("https://api.spacexdata.com/v4/launches/latest")
+        const response = await data.json()
+        return response
+        } else {
+            const data = await fetch("https://api.spacexdata.com/v4/launches")
             const response = await data.json()
             return response
-            } else {
-                const data = await fetch("https://api.spacexdata.com/v4/launches")
-                const response = await data.json()
-                return response
-            }
-        } catch(err) {
-            throw new Error(err)
         }
+    } catch(err) {
+        throw new Error(err)
     }
-    fetchspaceX().then(data => callback(data))
+    
 }

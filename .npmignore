@@ -1,2 +1,4 @@
 text.txt
 .github
+__tests__
+.babelrc

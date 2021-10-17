@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch'
-import { random } from 'fast-helpers.js';
+import { random } from '../functions/random.js';
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }

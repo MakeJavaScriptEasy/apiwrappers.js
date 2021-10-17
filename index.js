@@ -8,3 +8,4 @@ export { urbanDictionaryGetMeaning } from "./wrappers/urbandictionary.js";
 export { convertCurrency } from "./wrappers/currencyconverter.js";
 export { getPokemon } from "./wrappers/pokemon.js";
 export { getQuote } from "./wrappers/quote_generator.js";
+export { spaceX } from "./wrappers/space.js";
