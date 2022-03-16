@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "watch-test": "jest --watchAll"
+    "watch-test": "jest --watchAll",
+    "build": "tsc -b",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "api",
