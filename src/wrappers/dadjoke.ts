@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import {dadJokeData} from "../types";
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }
@@ -9,7 +10,7 @@ if (!globalThis.fetch) {
  * @returns {Object} if returnDict is true returns the JSON
  * @returns {string} if returnDict is false it just returns the text
  */
-export const dadJoke = async (returnDict = false) => {
+export const dadJoke = async (returnDict = false): Promise<dadJokeData | string> => {
     const data = await fetch("https://icanhazdadjoke.com/slack");
     const response = await data.json()
     if (returnDict) {
@@ -18,4 +19,3 @@ export const dadJoke = async (returnDict = false) => {
         return response.attachments[0].text;
     }
 }
-

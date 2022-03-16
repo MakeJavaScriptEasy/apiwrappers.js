@@ -3,7 +3,7 @@
  * @param {Array} array
  * @returns {string}
  * */
-const arrayToString = (array) => {
+export const arrayToString = (array: any[]): string => {
     let emptyStyring = ""
     array.forEach(element => {
         emptyStyring += ` ${element}`
@@ -16,8 +16,7 @@ const arrayToString = (array) => {
  * @param {object} object 
  * @returns {any[][]}
  */
-
-const objectToArray = (object) => {
+export const objectToArray = (object: object): any[] => {
     const em = []
     for (let i=0; Object.keys(object).length > i; i++) {
         let array = [Object.keys(object)[i], Object.values(object)[i]]
@@ -25,6 +24,3 @@ const objectToArray = (object) => {
     }
     return em
 }
-
-
-export { arrayToString, objectToArray };

@@ -1,4 +1,4 @@
-const apiUrls = {
+export const apiUrls = {
     CHUCK_NORRIS_API: "",
     OXFORD_API: "",
     MEME_API: "",
@@ -6,4 +6,3 @@ const apiUrls = {
     SPACE_API: ""
 }
 
-export default apiUrls;

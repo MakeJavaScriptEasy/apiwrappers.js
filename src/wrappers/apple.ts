@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 import { random } from '../functions/random.js';
+import {appleData} from "../types";
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }
@@ -9,7 +10,7 @@ if (!globalThis.fetch) {
  * @returns {string}
  * 
 */
-export const getAppleModels = async (returnDict) => {
+export const getAppleModels = async (returnDict: boolean): Promise<appleData | string> => {
     const data = await fetch("https://appleinformationapi.herokuapp.com/api")
     const response = await data.json()
     const randomNumber = random.randint(response[1].models.length)
@@ -19,4 +20,3 @@ export const getAppleModels = async (returnDict) => {
         return response[1].models[randomNumber]
     }
 }
-

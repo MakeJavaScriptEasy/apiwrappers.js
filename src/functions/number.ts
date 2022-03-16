@@ -4,9 +4,9 @@
  * @param {number} end 
  * @returns {object}
  */
-const range = (start=0, end) => {
+const range = (start=0, end: number) => {
     let arr = [];
-    while (start != end) {
+    while (start !== end) {
         arr.push(start)
         start++
     };
@@ -19,7 +19,7 @@ const range = (start=0, end) => {
  * @returns {Generator}
  */
 
-function* oddGenerator(till) {
+function* oddGenerator(till: number) {
     let returnedArray = range(0, till);
     for (let number of returnedArray) {
         if (number % 2 !== 0) {
@@ -34,7 +34,7 @@ function* oddGenerator(till) {
  * @returns {Generator}
  */
 
-function* evenGenerator(till) {
+function* evenGenerator(till: number) {
     let returnedArray = range(0, till) 
     for (let number of returnedArray) {
         if (number % 2 === 0) {

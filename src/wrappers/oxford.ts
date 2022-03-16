@@ -7,14 +7,17 @@ if (!globalThis.fetch) {
 /**
  * Class acting as a wrapper around the Oxford dictionary API
  */
-export const Oxford = class Oxford {
+export class Oxford {
+    private readonly appId: any;
+    private readonly appKey: any;
+    private readonly language: string;
     /**
      * 
      * @param {string} appId 
      * @param {string} appKey 
      * @param {string} language Enter the language code, defualt is en-gb
      */
-    constructor(appId, appKey, language = "en-gb") {
+    constructor(appId: string, appKey: string, language = "en-gb") {
         if (appId === null) throw new Error('You must provide a appID');
         if (appKey === null) throw new Error('You must provide a appKey');
         this.appId = appId;
@@ -27,7 +30,7 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns json
      */
-    baseRequest = async (word) => {
+    baseRequest = async (word: string) => {
         try {
             const data = await fetch(`https://od-api.oxforddictionaries.com/api/v2/entries/${this.language}/${word.toLowerCase()}`, {
                 method: "GET",
@@ -36,14 +39,13 @@ export const Oxford = class Oxford {
                     'app_key': this.appKey
                 },
             })
-            const response = await data.json()
-            return response
+            return await data.json()
         } catch (err) {
             return err
         }
     }
 
-    baseRequestTrans = async (word, sourceLang, targetLang) => {
+    baseRequestTrans = async (word: string, sourceLang: string, targetLang: string): Promise<object> => {
         try {
             const data = await fetch(`https://od-api.oxforddictionaries.com/api/v2/translations/${sourceLang}/${targetLang}/${word}`, {
                 method: "GET",
@@ -52,9 +54,8 @@ export const Oxford = class Oxford {
                     'app_key': this.appKey
                 },
             })
-            const response = await data.json()
-            return response
-        } catch (err) {
+            return await data.json()
+        } catch (err: any) {
             return err
         }
     }
@@ -64,7 +65,7 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns {string} the defination of the specified word
      */
-    async getWordDefination(word) {
+    async getWordDefination(word: string): Promise<string> {
         const data = await this.baseRequest(word)
         return data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0]
     }
@@ -73,7 +74,7 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns {string} gets the grammatical features of the specified word
      */
-    async getWordgrammaticalFeature(word) {
+    async getWordgrammaticalFeature(word: string): Promise<string> {
         const data = await this.baseRequest(word)
         return data.results[0].lexicalEntries[0].entries[0].grammaticalFeatures[0].text
     }
@@ -82,12 +83,12 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns {string[]} returns examples of using the word
      */
-    async getWordExamples(word) {
-        let em = []
+    async getWordExamples(word: string): Promise<string[]> {
+        let em: string[] = []
         const data = await this.baseRequest(word)
         const response = data.results[0].lexicalEntries[0].entries[0].senses
-        response.forEach((value) => {
-            value.examples.forEach((value) => {
+        response.forEach((value: { examples: { text: string; }[]; }) => {
+            value.examples.forEach((value: { text: string; }) => {
                 em.push(value.text)
             })
         })
@@ -99,11 +100,11 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns {string[]} returns an array of synonyms for the specified word
      */
-    async getWordSynonyms(word) {
+    async getWordSynonyms(word: string): Promise<string[]> {
         const data = await this.baseRequest(word)
         const res = data.results[0].lexicalEntries[0].entries[0].senses[0].subsenses[0].synonyms
-        let em = []
-        res.forEach((value, index) => em.push(value.text))
+        let em: string[] = []
+        res.forEach((value: { text: string; }) => em.push(value.text))
         return em
     }
 
@@ -113,18 +114,16 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns {string[]} no idea what this is
      */
-    async getWordLexicalCategory(word) {
-        let em = [];
+    async getWordLexicalCategory(word: string): Promise<string[]> {
+        let em: string[] = [];
         const data = await this.baseRequest(word)
         const res = data.results[0].lexicalEntries
-        res.forEach(value => em.push(value.lexicalCategory.text))
+        res.forEach((value: { lexicalCategory: { text: string; }; }) => em.push(value.lexicalCategory.text))
         return em
     }
 
-    async getTranslation(word, sourceLang, targetLang) {
-        const data = await this.baseRequestTrans(word, sourceLang, targetLang)
-        return data
-
+    async getTranslation(word: string, sourceLang: string, targetLang: string): Promise<object> {
+        return await this.baseRequestTrans(word, sourceLang, targetLang)
     }
 }
 

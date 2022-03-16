@@ -10,13 +10,13 @@ if (!globalThis.fetch) {
  * @param {string} rapidApiHost
  * @param {string} word
  * @param {function(data):any} callback
- * @returns {(object|string[])}
+ * @returns {object|string[]}
  */
 
 
-export const urbanDictionaryGetMeaning = (rapidApiKey, rapidApiHost, word, returnDict=false, callback) => {
+export const urbanDictionaryGetMeaning = (rapidApiKey: string, rapidApiHost: string, word: string, returnDict: boolean = false, callback: (data: any) => any) => {
     const urbanDictionaryGetMeaningFetch = async () => {
-        let em = []
+        let em: string[] = []
         const data = await fetch(`https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${word}`, {
         "method": "GET",
         "headers": {
@@ -25,7 +25,7 @@ export const urbanDictionaryGetMeaning = (rapidApiKey, rapidApiHost, word, retur
         }})
         const response = await data.json();
         if (returnDict) {
-            response.list.forEach(element => {
+            response.list.forEach((element: { definition: string; }) => {
                 let meaning = element.definition;
                 em.push(meaning);
                 return em;

@@ -1,13 +1,13 @@
 /**
  * Random object which has many methods.
  */
-const random = {
+export const random = {
     /**
      * Enter any number in till and it will return it
      * @param {number} till 
      * @returns {number}
      */
-    randint: till => {
+    randint: (till: number) => {
         return Math.floor(Math.random() * till)
     },
 
@@ -16,13 +16,8 @@ const random = {
      * @param {Array} array 
      * @returns {any}
      */
-    choice: array => {
+    choice: (array: any[]) => {
         let index = Math.floor(Math.random() * array.length);
         return array[index];
     }
-
-
 }
-
-export {random};
-
