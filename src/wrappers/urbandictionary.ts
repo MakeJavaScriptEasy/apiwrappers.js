@@ -14,9 +14,9 @@ if (!globalThis.fetch) {
  */
 
 
-export const urbanDictionaryGetMeaning = (rapidApiKey: string, rapidApiHost: string, word: string, returnDict: boolean = false, callback: (data) => any) => {
+export const urbanDictionaryGetMeaning = (rapidApiKey: string, rapidApiHost: string, word: string, returnDict: boolean = false, callback: (data: any) => any) => {
     const urbanDictionaryGetMeaningFetch = async () => {
-        let em = []
+        let em: string[] = []
         const data = await fetch(`https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${word}`, {
         "method": "GET",
         "headers": {
@@ -25,7 +25,7 @@ export const urbanDictionaryGetMeaning = (rapidApiKey: string, rapidApiHost: str
         }})
         const response = await data.json();
         if (returnDict) {
-            response.list.forEach(element => {
+            response.list.forEach((element: { definition: string; }) => {
                 let meaning = element.definition;
                 em.push(meaning);
                 return em;

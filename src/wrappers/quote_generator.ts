@@ -24,7 +24,7 @@ export const getQuote = async (returnDict = false): Promise<quoteData | string> 
     } else {
       return answer.quoteText;
     }
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(err);
   }
 };

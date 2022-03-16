@@ -10,7 +10,7 @@ if (!globalThis.fetch) {
  * @returns {Object} if returnDict is true returns the JSON
  * @returns {string} if returnDict is false it just returns the Image
  */
-export const randomFox = async (returnDict):  Promise<foxData | string> => {
+export const randomFox = async (returnDict: boolean):  Promise<foxData | string> => {
     const data = await fetch("https://randomfox.ca/floof/?ref=apilist.fun")
     const response = await data.json()
     if (!returnDict) {

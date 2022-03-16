@@ -11,7 +11,7 @@ if (!globalThis.fetch) {
  * @returns {Promise}
  */
 
-export const spaceX = async (latest=true, callback): Promise<spaceXLaunchData> => {
+export const spaceX = async (latest: boolean=true, callback: (data: any) => any): Promise<spaceXLaunchData> => {
     try {
         if (latest) {
         const data = await fetch("https://api.spacexdata.com/v4/launches/latest")
@@ -20,7 +20,7 @@ export const spaceX = async (latest=true, callback): Promise<spaceXLaunchData> =
             const data = await fetch("https://api.spacexdata.com/v4/launches")
             return await data.json()
         }
-    } catch(err) {
+    } catch(err: any) {
         throw new Error(err)
     }
     
