@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import {pokemonData} from "../types";
 
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
@@ -12,8 +13,7 @@ if (!globalThis.fetch) {
  * @returns {object}
  */
 
-export const getPokemon = async (pokemon) => {
+export const getPokemon = async (pokemon: string): Promise<pokemonData> => {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`);
-    const response = await data.json();
-    return response
+    return await data.json()
 } 

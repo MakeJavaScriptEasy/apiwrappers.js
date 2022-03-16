@@ -12,7 +12,7 @@ if (!globalThis.fetch) {
  * @param {number} amount
  * @returns {string}
  */
-export const convertCurrency = async (rapidApiHost, rapidApiKey, from, to, amount=1) => {
+export const convertCurrency = async (rapidApiHost, rapidApiKey, from, to, amount=1): Promise<string> => {
     try {
         const data  = await fetch(`https://currency-exchange.p.rapidapi.com/exchange?to=${to}&from=${from}&q=${amount}`, {
         "method": "GET",
@@ -23,7 +23,7 @@ export const convertCurrency = async (rapidApiHost, rapidApiKey, from, to, amoun
         })
         return data.text()
     } catch (err) {
-        return new Error(err)
+        throw new Error(err)
     }
     
 }

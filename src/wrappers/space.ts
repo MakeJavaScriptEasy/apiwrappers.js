@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import {spaceXLaunchData} from "../types";
 
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
@@ -10,16 +11,14 @@ if (!globalThis.fetch) {
  * @returns {Promise}
  */
 
-export const spaceX = async (latest=true, callback) => {
+export const spaceX = async (latest=true, callback): Promise<spaceXLaunchData> => {
     try {
         if (latest) {
         const data = await fetch("https://api.spacexdata.com/v4/launches/latest")
-        const response = await data.json()
-        return response
+            return await data.json()
         } else {
             const data = await fetch("https://api.spacexdata.com/v4/launches")
-            const response = await data.json()
-            return response
+            return await data.json()
         }
     } catch(err) {
         throw new Error(err)

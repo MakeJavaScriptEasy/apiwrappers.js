@@ -7,7 +7,10 @@ if (!globalThis.fetch) {
 /**
  * Class acting as a wrapper around the Oxford dictionary API
  */
-export const Oxford = class Oxford {
+export class Oxford {
+    private readonly appId: any;
+    private readonly appKey: any;
+    private readonly language: string;
     /**
      * 
      * @param {string} appId 
@@ -36,8 +39,7 @@ export const Oxford = class Oxford {
                     'app_key': this.appKey
                 },
             })
-            const response = await data.json()
-            return response
+            return await data.json()
         } catch (err) {
             return err
         }
@@ -52,8 +54,7 @@ export const Oxford = class Oxford {
                     'app_key': this.appKey
                 },
             })
-            const response = await data.json()
-            return response
+            return await data.json()
         } catch (err) {
             return err
         }
@@ -113,7 +114,7 @@ export const Oxford = class Oxford {
      * @param {string} word 
      * @returns {string[]} no idea what this is
      */
-    async getWordLexicalCategory(word) {
+    async getWordLexicalCategory(word): Promise<string[]> {
         let em = [];
         const data = await this.baseRequest(word)
         const res = data.results[0].lexicalEntries
@@ -122,9 +123,7 @@ export const Oxford = class Oxford {
     }
 
     async getTranslation(word, sourceLang, targetLang) {
-        const data = await this.baseRequestTrans(word, sourceLang, targetLang)
-        return data
-
+        return await this.baseRequestTrans(word, sourceLang, targetLang)
     }
 }
 

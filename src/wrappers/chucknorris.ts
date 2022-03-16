@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+import {jokeData} from "../types";
 if (!globalThis.fetch) {
     globalThis.fetch = fetch;
 }
@@ -10,7 +11,7 @@ if (!globalThis.fetch) {
  * @returns {Object} if returnDict is true returns the JSON
  * @returns {string} if returnDict is false it just returns the text
  */
-export const getChuckNorrisJoke = async (returnDict = false, category = null) => {
+export const getChuckNorrisJoke = async (returnDict = false, category = null): Promise<jokeData | string[]> => {
     const catagories = ["animal", "career", "celebrity", "dev", "explicit", "fashion", "food"
         , "history", "money", "movie", "music", "political", "religion", "science", "sport", "travel"];
     if (!category) {
@@ -35,4 +36,3 @@ export const getChuckNorrisJoke = async (returnDict = false, category = null) =>
         }
     }
 }
-
